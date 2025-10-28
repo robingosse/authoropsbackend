@@ -1,0 +1,82 @@
+/* Base Layout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f0e6; /* manilla */
+  color: #333;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #5d4037; /* dark brown */
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  color: #ffe0b2;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar .overview {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #ddd3c3;
+}
+
+.container {
+  margin-left: 220px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Sticky Note Modules */
+.module {
+  background-color: #fff9c4; /* sticky note yellow */
+  border: 1px solid #e0d98c;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.3);
+  min-height: 375px;
+  transform: none;
+  transition: all 0.3s ease;
+}
+
+.module:hover {
+  transform: scale(1.01);
+}
+
+h3 {
+  margin-top: 0;
+  color: #6d4c41; /* warm brown */
+}
+
+input[type="file"] {
+  margin-top: 10px;
+  background-color: #ffe082;
+  border: 1px solid #e0c067;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Alerts */
+.alert {
+  background-color: #ffccbc;
+  color: #bf360c;
+  border-left: 4px solid #e64a19;
+}
