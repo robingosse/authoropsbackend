@@ -1,25 +1,21 @@
-
 const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
+const path = require('path');
 const app = express();
-const port = 3001;
+const PORT = process.env.PORT || 10000;
 
-app.use(cors());
-app.use(express.json());
+// Serve static files
+app.use(express.static(__dirname));
 
-const upload = multer({ dest: 'uploads/' });
-
-app.post('/upload/:module', upload.single('file'), (req, res) => {
-  console.log(`Received ${req.params.module} CSV:`, req.file.originalname);
-  res.json({ status: 'ok', file: req.file.originalname });
+// Sample endpoint
+app.get("/api/status", (req, res) => {
+  res.json({ status: "Backend is alive" });
 });
 
-app.get('/auth/:service', (req, res) => {
-  const service = req.params.service;
-  res.send(`Start OAuth flow for ${service}`);
+// Fallback to index.html for frontend routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`AuthorOps API running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
