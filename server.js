@@ -1,21 +1,24 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+
+// Let Render assign a port, fallback to 10000 for local dev
 const PORT = process.env.PORT || 10000;
 
-// Serve static files
+// Serve static assets (JS, CSS, HTML, etc.) from the root
 app.use(express.static(__dirname));
 
-// Sample endpoint
-app.get("/api/status", (req, res) => {
-  res.json({ status: "Backend is alive" });
+// Sample API route to confirm backend is alive
+app.get('/api/status', (req, res) => {
+  res.json({ status: 'Backend is alive', timestamp: new Date().toISOString() });
 });
 
-// Fallback to index.html for frontend routing
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+// Catch-all: route everything else to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`✅ AuthorOps backend is running on port ${PORT}`);
 });
